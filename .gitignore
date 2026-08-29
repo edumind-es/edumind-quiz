@@ -1,6 +1,10 @@
 # Dependencies
 node_modules/
+# `vendor/` es para dependencias de PHP/Composer. Los recursos que la
+# aplicación sirve desde frontend/public/vendor sí se versionan: index.html
+# los carga, y sin ellos la aplicación se ve sin estilos.
 vendor/
+!frontend/public/vendor/
 venv/
 .venv/
 __pycache__/
