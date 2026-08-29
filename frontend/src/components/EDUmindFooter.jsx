@@ -34,8 +34,8 @@ export default function EDUmindFooter({ appName = 'EDUmind Quiz', version = '1.0
         {' / '}
         <a href="https://eupl.eu/1.2/es/" target="_blank" rel="noopener noreferrer" style={{ color: 'inherit', textDecoration: 'underline' }}>EUPL-1.2</a>
         {' · '}
-        <a href="https://github.com/edumind-es" target="_blank" rel="noopener noreferrer" style={{ color: 'inherit', textDecoration: 'underline' }}>
-          Código fuente: github.com/edumind-es
+        <a href="https://github.com/edumind-es/edumind-quiz" target="_blank" rel="noopener noreferrer" style={{ color: 'inherit', textDecoration: 'underline' }}>
+          Código fuente en GitHub
         </a>
       </p>
       <nav aria-label="Legal" style={{ display: 'flex', justifyContent: 'center', flexWrap: 'wrap', gap: '0.25rem 0.5rem' }}>
