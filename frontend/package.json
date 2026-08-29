@@ -11,7 +11,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@edumind/footer": "^1.0.0",
+    "@edumind/footer": "git+https://github.com/edumind-es/edumind-footer.git",
     "axios": "^1.13.3",
     "clsx": "^2.1.1",
     "framer-motion": "^12.29.0",
