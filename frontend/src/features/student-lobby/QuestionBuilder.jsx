@@ -80,7 +80,7 @@ const QuestionBuilder = ({ areas, teamId, onProposalSubmitted }) => {
                         <select
                             value={selectedArea}
                             onChange={(e) => setSelectedArea(e.target.value)}
-                            className="w-full bg-slate-900/50 border border-slate-700 rounded-lg px-4 py-2.5 text-slate-200 outline-none focus:border-indigo-500 transition-colors"
+                            className="w-full bg-slate-900/50 border border-slate-700 rounded-lg px-4 py-2.5 text-slate-200 outline-hidden focus:border-indigo-500 transition-colors"
                         >
                             <option value="">-- Selecciona un Área --</option>
                             {areas.map(area => (
@@ -94,7 +94,7 @@ const QuestionBuilder = ({ areas, teamId, onProposalSubmitted }) => {
                         <textarea
                             value={questionText}
                             onChange={(e) => setQuestionText(e.target.value)}
-                            className="w-full bg-slate-900/50 border border-slate-700 rounded-lg px-4 py-3 text-slate-200 outline-none focus:border-indigo-500 transition-colors min-h-[80px]"
+                            className="w-full bg-slate-900/50 border border-slate-700 rounded-lg px-4 py-3 text-slate-200 outline-hidden focus:border-indigo-500 transition-colors min-h-[80px]"
                             placeholder="Ej: ¿Cuál es el océano más grande del mundo?"
                         />
                     </div>
@@ -106,7 +106,7 @@ const QuestionBuilder = ({ areas, teamId, onProposalSubmitted }) => {
                                 <button
                                     type="button"
                                     onClick={() => setCorrectIndex(idx)}
-                                    className={`flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center border-2 transition-all ${correctIndex === idx
+                                    className={`shrink-0 w-8 h-8 rounded-full flex items-center justify-center border-2 transition-all ${correctIndex === idx
                                             ? 'border-emerald-500 bg-emerald-500/20 text-emerald-400'
                                             : 'border-slate-600 bg-slate-800 text-slate-500 hover:border-slate-500'
                                         }`}
@@ -119,7 +119,7 @@ const QuestionBuilder = ({ areas, teamId, onProposalSubmitted }) => {
                                     value={opt}
                                     onChange={(e) => handleOptionChange(idx, e.target.value)}
                                     placeholder={`Opción ${idx + 1}`}
-                                    className="w-full bg-slate-900/50 border border-slate-700 rounded-lg px-4 py-2 text-slate-200 outline-none focus:border-indigo-500 transition-colors"
+                                    className="w-full bg-slate-900/50 border border-slate-700 rounded-lg px-4 py-2 text-slate-200 outline-hidden focus:border-indigo-500 transition-colors"
                                 />
                             </div>
                         ))}
@@ -130,7 +130,7 @@ const QuestionBuilder = ({ areas, teamId, onProposalSubmitted }) => {
                         <textarea
                             value={explanation}
                             onChange={(e) => setExplanation(e.target.value)}
-                            className="w-full bg-slate-900/50 border border-slate-700 rounded-lg px-4 py-2 test-sm text-slate-400 outline-none focus:border-indigo-500 transition-colors"
+                            className="w-full bg-slate-900/50 border border-slate-700 rounded-lg px-4 py-2 test-sm text-slate-400 outline-hidden focus:border-indigo-500 transition-colors"
                             placeholder="Se mostrará si alguien falla..."
                         />
                     </div>
@@ -157,7 +157,7 @@ const QuestionBuilder = ({ areas, teamId, onProposalSubmitted }) => {
                 </div>
 
                 <div className="p-6 flex-1 overflow-auto">
-                    <pre className="text-sm font-mono text-emerald-400 whitespace-pre-wrap break-words">
+                    <pre className="text-sm font-mono text-emerald-400 whitespace-pre-wrap wrap-break-word">
                         <code className="prettyprint lang-json">
                             {JSON.stringify(jsonPreview, null, 2)}
                         </code>

@@ -42,10 +42,10 @@ export default function StudentDashboard() {
     if (loading) return <div className="text-white text-center mt-20">Cargando base de datos del equipo...</div>;
 
     return (
-        <div className="min-h-screen bg-[var(--color-surface)] p-4 md:p-8 pb-32">
+        <div className="min-h-screen bg-(--color-surface) p-4 md:p-8 pb-32">
             <header className="flex flex-col md:flex-row justify-between items-center mb-8 text-white gap-4">
                 <div>
-                    <h1 className="text-3xl font-bold bg-gradient-mental text-transparent bg-clip-text drop-shadow-sm">
+                    <h1 className="text-3xl font-bold bg-gradient-mental text-transparent bg-clip-text drop-shadow-xs">
                         Equipo: {team?.name}
                     </h1>
                     <p className="text-slate-400 mt-1">Sala de Preparación Académica</p>
@@ -87,7 +87,7 @@ export default function StudentDashboard() {
                             <div key={p.id} className="card p-5 border border-slate-700/50 flex flex-col justify-between hover:border-slate-600 transition-colors">
                                 <div>
                                     <div className="flex justify-between items-start mb-3">
-                                        <span className="text-xs font-mono font-bold text-indigo-400 uppercase tracking-wider bg-indigo-500/10 px-2 py-1 rounded">
+                                        <span className="text-xs font-mono font-bold text-indigo-400 uppercase tracking-wider bg-indigo-500/10 px-2 py-1 rounded-sm">
                                             {areas.find(a => a.area_id === p.area_id)?.name || 'Área'}
                                         </span>
                                         <StatusBadge status={p.status} />
