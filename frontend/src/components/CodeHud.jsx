@@ -14,7 +14,7 @@ export default function CodeHud() {
     const { logs } = useCodeStream();
 
     return (
-        <div className="fixed bottom-4 right-4 w-96 max-h-[400px] overflow-hidden rounded-lg bg-black/80 backdrop-blur border border-green-500/30 text-xs font-mono shadow-2xl z-50 pointer-events-none">
+        <div className="fixed bottom-4 right-4 w-96 max-h-[400px] overflow-hidden rounded-lg bg-black/80 backdrop-blur-sm border border-green-500/30 text-xs font-mono shadow-2xl z-50 pointer-events-none">
             <div className="bg-black/90 p-2 border-b border-green-500/30 flex items-center gap-2 text-green-500 font-bold uppercase tracking-wider">
                 <Terminal size={14} />
                 System Logic Stream
@@ -27,7 +27,7 @@ export default function CodeHud() {
                             <TypeIcon type={log.type} />
                             <span className="uppercase">{log.type}</span>
                         </div>
-                        <div className={`p-2 rounded border-l-2 ${log.type === 'db' ? 'border-green-500 bg-green-900/10' : 'border-blue-500 bg-blue-900/10'}`}>
+                        <div className={`p-2 rounded-sm border-l-2 ${log.type === 'db' ? 'border-green-500 bg-green-900/10' : 'border-blue-500 bg-blue-900/10'}`}>
                             <div className="text-gray-300 mb-1">{log.message}</div>
                             {log.codeSnippet && (
                                 <pre className="text-green-400 overflow-x-auto whitespace-pre-wrap">

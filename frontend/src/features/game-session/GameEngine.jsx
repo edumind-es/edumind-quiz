@@ -82,7 +82,7 @@ export default function GameEngine() {
 
     if (!gameActive) {
         return (
-            <div className="min-h-screen bg-[var(--color-surface)] p-8 flex flex-col items-center justify-center">
+            <div className="min-h-screen bg-(--color-surface) p-8 flex flex-col items-center justify-center">
                 <div className="card max-w-2xl w-full text-center p-12 bg-slate-800/80 border-slate-700/50 shadow-2xl">
                     <ShieldAlert size={64} className="mx-auto mb-6 text-indigo-400" />
                     <h1 className="text-4xl font-black text-transparent bg-clip-text bg-gradient-mental mb-4">Motor de Juego Trivial</h1>
@@ -124,7 +124,7 @@ export default function GameEngine() {
     }
 
     return (
-        <div className="min-h-screen bg-[var(--color-surface)] p-4 md:p-8 pb-32 flex flex-col items-center">
+        <div className="min-h-screen bg-(--color-surface) p-4 md:p-8 pb-32 flex flex-col items-center">
             <header className="w-full max-w-4xl flex justify-between items-center mb-12">
                 <div className="bg-slate-800/80 px-4 py-2 rounded-xl text-slate-300 border border-slate-700 shadow-md">
                     Equipo: <span className="font-bold text-white">{team?.name}</span>
@@ -163,7 +163,7 @@ export default function GameEngine() {
                                             : 'bg-slate-900/50 border-slate-700 text-slate-300 hover:border-indigo-500/50 hover:bg-slate-800'
                                         } ${feedback && !isSelected ? 'opacity-50 grayscale' : ''}`}
                                 >
-                                    <span className="mr-3 font-bold text-slate-500 bg-black/20 px-2 py-0.5 rounded">
+                                    <span className="mr-3 font-bold text-slate-500 bg-black/20 px-2 py-0.5 rounded-sm">
                                         {String.fromCharCode(65 + i)}
                                     </span>
                                     {text}

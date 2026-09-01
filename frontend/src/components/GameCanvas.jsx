@@ -51,7 +51,7 @@ export default function GameCanvas({ classroomId }) {
             <CodeHud />
 
             {/* Score */}
-            <div className="absolute top-4 right-4 text-2xl font-bold text-[var(--color-primary)]">
+            <div className="absolute top-4 right-4 text-2xl font-bold text-(--color-primary)">
                 Score: {score}
             </div>
 
@@ -74,7 +74,7 @@ export default function GameCanvas({ classroomId }) {
                                 <button
                                     key={i}
                                     onClick={() => handleAnswer(i)}
-                                    className="bg-white/10 hover:bg-[var(--color-secondary)] hover:text-black p-6 rounded-xl text-xl font-bold transition-all transform hover:scale-105 border-2 border-white/20"
+                                    className="bg-white/10 hover:bg-(--color-secondary) hover:text-black p-6 rounded-xl text-xl font-bold transition-all transform hover:scale-105 border-2 border-white/20"
                                 >
                                     {opt}
                                 </button>

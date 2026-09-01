@@ -16,7 +16,7 @@ export default function Navbar() {
     };
 
     return (
-        <nav className="w-full h-16 bg-gradient-to-r from-[var(--edufis-mental-end)] to-[var(--edufis-fisico-end)] shadow-lg flex items-center justify-between px-6 z-50 relative">
+        <nav className="w-full h-16 bg-linear-to-r from-(--edufis-mental-end) to-(--edufis-fisico-end) shadow-lg flex items-center justify-between px-6 z-50 relative">
             <Link to="/" className="flex items-center gap-3 decoration-none group">
                 <img src="/logo.png" alt="Logo" className="h-10 w-auto bg-white/10 rounded-full p-1 group-hover:bg-white/20 transition-all" />
                 <span className="text-white font-bold text-xl tracking-wide hidden md:block">EDUmind Quiz</span>

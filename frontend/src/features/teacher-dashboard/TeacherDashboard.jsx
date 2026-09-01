@@ -35,7 +35,7 @@ export default function TeacherDashboard() {
     };
 
     return (
-        <div className="min-h-screen bg-[var(--color-background)] p-4 md:p-8 text-white pb-32">
+        <div className="min-h-screen bg-(--color-background) p-4 md:p-8 text-white pb-32">
             <header className="flex flex-col md:flex-row justify-between items-center mb-12 gap-4">
                 <h1 className="text-3xl lg:text-4xl font-black text-transparent bg-clip-text bg-gradient-mental drop-shadow-lg">
                     Centro de Mando Docente
