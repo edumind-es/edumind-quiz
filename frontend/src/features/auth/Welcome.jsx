@@ -42,7 +42,7 @@ export default function Welcome() {
                     <div>
                         <p className="lm-kicker">Aplicación · gamificación</p>
                         <h1 className="lm-display">Quiz<br />EDUmind</h1>
-                        <p className="lm-tagline">Evaluaciones interactivas con dinámica de juego, de Los Mundos Edufis.</p>
+                        <p className="lm-tagline">Evaluaciones interactivas con dinámica de juego, de EDUmind, por Luis Vilela Acuña.</p>
                     </div>
                     <img src="/logo.png" alt="" aria-hidden="true" style={{ width: '110px', height: '110px', objectFit: 'contain', opacity: 0.9 }} />
                 </header>
@@ -87,7 +87,7 @@ export default function Welcome() {
                 </main>
 
                 <div className="lm-foot">
-                    &copy; {new Date().getFullYear()} <b>EDUmind</b> · Los Mundos Edufis
+                    &copy; {new Date().getFullYear()} <b>EDUmind</b> · Luis Vilela Acuña
                 </div>
             </div>
         </div>
