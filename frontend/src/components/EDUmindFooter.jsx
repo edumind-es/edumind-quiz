@@ -1,7 +1,7 @@
 /*
  * Copyright (C) 2024-2026 Luis Vilela Acuña <contacto@edumind.es>
  * Author: Luis Vilela Acuña
- * License: AGPL-3.0
+ * Licencia: AGPL-3.0-or-later OR EUPL-1.2
  */
 
 const legalLinks = [
@@ -37,6 +37,18 @@ export default function EDUmindFooter({ appName = 'EDUmind Quiz', version = '1.0
         <a href="https://github.com/edumind-es/edumind-quiz" target="_blank" rel="noopener noreferrer" style={{ color: 'inherit', textDecoration: 'underline' }}>
           Código fuente en GitHub
         </a>
+        {' · '}
+        <a href="https://github.com/edumind-es/edumind-quiz/blob/main/CREDITS.md" target="_blank" rel="noopener noreferrer" style={{ color: 'inherit', textDecoration: 'underline' }}>
+          Créditos
+        </a>
+        {' · '}
+        <a href="https://github.com/edumind-es/edumind-quiz/blob/main/PRIVACY.md" target="_blank" rel="noopener noreferrer" style={{ color: 'inherit', textDecoration: 'underline' }}>
+          Qué datos guarda
+        </a>
+      </p>
+      <p style={{ margin: '0 0 0.5rem' }}>
+        Hecho con vibe coding y asistencia de IA;{' '}
+        <a href="https://github.com/edumind-es/edumind-quiz#hecho-con-ia" target="_blank" rel="noopener noreferrer" style={{ color: 'inherit', textDecoration: 'underline' }}>qué se ha comprobado</a>.
       </p>
       <nav aria-label="Legal" style={{ display: 'flex', justifyContent: 'center', flexWrap: 'wrap', gap: '0.25rem 0.5rem' }}>
         {legalLinks.map((link, i) => (
