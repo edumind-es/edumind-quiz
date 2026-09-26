@@ -42,6 +42,8 @@ jobs:
           python-version: '3.12'
           cache: pip
       - name: Instalar dependencias
-        run: pip install -r requirements.txt
+        run: pip install -r requirements-dev.txt
       - name: Comprobar que el paquete importa sin errores
         run: python -m compileall -q app main.py
+      - name: Pruebas
+        run: python -m pytest -q

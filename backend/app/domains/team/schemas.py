@@ -15,3 +15,7 @@ class Team(TeamBase):
 
     class Config:
         from_attributes = True
+
+class TeamLogin(BaseModel):
+    """El PIN viaja en el cuerpo de la petición, nunca en la URL."""
+    pin: str

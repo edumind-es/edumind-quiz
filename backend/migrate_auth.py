@@ -1,7 +1,8 @@
 import sqlite3
 import os
 
-DB_PATH = "/var/www/edumind_quiz/backend/edumind_quiz.db"
+# Ruta de la BD: la variable QUIZ_DB_PATH o, por defecto, el fichero junto a este script
+DB_PATH = os.environ.get("QUIZ_DB_PATH", os.path.join(os.path.dirname(os.path.abspath(__file__)), "edumind_quiz.db"))
 
 def migrate():
     conn = sqlite3.connect(DB_PATH)

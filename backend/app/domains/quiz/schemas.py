@@ -47,3 +47,13 @@ class Question(BaseModel):
     
     class Config:
         from_attributes = True
+
+class AnswerIn(BaseModel):
+    """Respuesta que envía el equipo: índice de la opción elegida."""
+    selected_index: int
+
+class AnswerOut(BaseModel):
+    """Corrección hecha en el servidor: acierto, índice correcto y explicación."""
+    correct: bool
+    correct_option_index: int
+    explanation: Optional[str] = None

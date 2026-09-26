@@ -53,3 +53,4 @@ class Question(Base):
     origin_proposal_id = Column(Integer, ForeignKey("question_proposals.id"), nullable=True)
 
     proposal = relationship("Proposal", back_populates="questions")
+    area = relationship("Area")  # necesario para devolver el nombre del área en /game/question
