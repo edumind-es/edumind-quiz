@@ -7,8 +7,9 @@ export default function TeacherDashboard() {
     const { user } = useAuth();
     const [proposals, setProposals] = useState([]);
     const [loading, setLoading] = useState(true);
+    const [errorMsg, setErrorMsg] = useState('');
 
-    const activeProposalId = 1; // Mapped dynamically in a real app
+    const activeProposalId = 1; // Pendiente: elegir la partida desde la interfaz
 
     useEffect(() => {
         fetchProposals();
@@ -20,6 +21,7 @@ export default function TeacherDashboard() {
             setProposals(res.data);
         } catch (err) {
             console.error(err);
+            setErrorMsg('No se pudieron cargar las propuestas.');
         } finally {
             setLoading(false);
         }
@@ -29,8 +31,8 @@ export default function TeacherDashboard() {
         try {
             await api.put(`/teacher/proposals/${id}/review`, { status, teacher_feedback: feedback });
             fetchProposals();
-        } catch (err) {
-            alert("Error al auditar");
+        } catch {
+            setErrorMsg('No se pudo guardar la revisión. Comprueba la conexión y vuelve a intentarlo.');
         }
     };
 
@@ -38,11 +40,11 @@ export default function TeacherDashboard() {
         <div className="min-h-screen bg-(--color-background) p-4 md:p-8 text-white pb-32">
             <header className="flex flex-col md:flex-row justify-between items-center mb-12 gap-4">
                 <h1 className="text-3xl lg:text-4xl font-black text-transparent bg-clip-text bg-gradient-mental drop-shadow-lg">
-                    Centro de Mando Docente
+                    Panel del docente
                 </h1>
                 <div className="bg-slate-800/80 px-6 py-2.5 rounded-full border border-slate-700 shadow-xl flex items-center gap-3">
                     <div className="w-2.5 h-2.5 bg-emerald-500 rounded-full animate-pulse shadow-[0_0_10px_rgba(16,185,129,0.8)]"></div>
-                    <span className="font-medium text-slate-200">Docente: {user?.username}</span>
+                    <span className="font-medium text-slate-200">Docente: {user?.name}</span>
                 </div>
             </header>
 
@@ -52,16 +54,18 @@ export default function TeacherDashboard() {
                         <span className="flex items-center justify-center w-8 h-8 bg-amber-500/20 text-amber-400 rounded-lg border border-amber-500/30 font-mono text-sm">
                             {proposals.length}
                         </span>
-                        Propuestas Pendientes de Auditoría
+                        Propuestas pendientes de revisión
                     </h2>
 
+                    {errorMsg && <div role="alert" className="mb-6 p-3 bg-red-500/10 border border-red-500/50 rounded-lg text-red-300 text-sm">{errorMsg}</div>}
+
                     {loading ? (
-                        <div className="text-center py-12 text-slate-400 animate-pulse">Obteniendo propuestas de la red...</div>
+                        <div className="text-center py-12 text-slate-400 animate-pulse">Cargando propuestas...</div>
                     ) : (
                         <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
                             {proposals.length === 0 && (
                                 <div className="col-span-full text-center py-12 text-slate-500 border-2 border-dashed border-slate-700/50 rounded-2xl">
-                                    No hay propuestas pendientes para auditar. ¡El alumnado aún está trabajando!
+                                    No hay propuestas pendientes de revisar. ¡El alumnado aún está trabajando!
                                 </div>
                             )}
 
@@ -69,7 +73,7 @@ export default function TeacherDashboard() {
                                 let opts = [];
                                 try {
                                     opts = JSON.parse(p.options_json);
-                                } catch (e) {
+                                } catch {
                                     opts = [p.options_json];
                                 }
 
@@ -105,7 +109,7 @@ export default function TeacherDashboard() {
 
                                         {p.explanation && (
                                             <div className="text-sm text-slate-400 mb-6 bg-slate-800/50 p-3 rounded-lg border-l-2 border-indigo-500">
-                                                <span className="block text-xs font-bold text-indigo-400 mb-1">Dato Didáctico:</span>
+                                                <span className="block text-xs font-bold text-indigo-400 mb-1">Explicación:</span>
                                                 "{p.explanation}"
                                             </div>
                                         )}
@@ -115,6 +119,7 @@ export default function TeacherDashboard() {
                                                 onClick={() => handleReview(p.id, 'validated')}
                                                 className="flex-1 bg-emerald-500/10 hover:bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 p-2.5 rounded-xl flex justify-center items-center transition-colors"
                                                 title="Aprobar"
+                                                aria-label="Aprobar"
                                             >
                                                 <Check size={20} />
                                             </button>
@@ -125,6 +130,7 @@ export default function TeacherDashboard() {
                                                 }}
                                                 className="flex-1 bg-amber-500/10 hover:bg-amber-500/20 text-amber-400 border border-amber-500/30 p-2.5 rounded-xl flex justify-center items-center transition-colors"
                                                 title="Devolver para corregir"
+                                                aria-label="Devolver para corregir"
                                             >
                                                 <RotateCcw size={20} />
                                             </button>
@@ -135,7 +141,8 @@ export default function TeacherDashboard() {
                                                     }
                                                 }}
                                                 className="flex-1 bg-rose-500/10 hover:bg-rose-500/20 text-rose-400 border border-rose-500/30 p-2.5 rounded-xl flex justify-center items-center transition-colors"
-                                                title="Rechazar y Eliminar"
+                                                title="Rechazar y eliminar"
+                                                aria-label="Rechazar y eliminar"
                                             >
                                                 <X size={20} />
                                             </button>

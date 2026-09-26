@@ -15,8 +15,8 @@ export default function TeacherLogin() {
         try {
             await loginTeacher(usernameOrEmail, password);
             navigate('/teacher/dashboard');
-        } catch (error) {
-            setErrorMsg('Credenciales inválidas');
+        } catch {
+            setErrorMsg('Usuario o contraseña incorrectos');
         }
     };
 
@@ -29,7 +29,7 @@ export default function TeacherLogin() {
                 </div>
                 <form onSubmit={handleSubmit} style={{ maxWidth: '420px', padding: '2.2rem 0 3rem' }}>
                     <p className="lm-kicker">Acceso · docente</p>
-                    <h2 className="lm-display" style={{ fontSize: 'clamp(2rem,5vw,3rem)' }}>Iniciar sesión</h2>
+                    <h1 className="lm-display" style={{ fontSize: 'clamp(2rem,5vw,3rem)' }}>Iniciar sesión</h1>
                     {errorMsg && (
                         <div className="lm-auto" role="alert" style={{ marginTop: '1rem' }}>
                             <span className="lm-flag">error</span>{errorMsg}
@@ -57,7 +57,7 @@ export default function TeacherLogin() {
                     </div>
                     <button type="submit" className="lm-btn" style={{ width: '100%', marginTop: '1.6rem' }}>Iniciar sesión →</button>
                     <p style={{ marginTop: '1.2rem', fontSize: '.9rem', color: 'var(--lm-ink-2)' }}>
-                        ¿No tienes cuenta? <Link to="/teacher/register" style={{ color: 'var(--lm-mental-text)' }}>Regístrate (Privacy First)</Link>
+                        ¿No tienes cuenta? <Link to="/teacher/register" style={{ color: 'var(--lm-mental-text)', textDecoration: 'underline' }}>Regístrate</Link>
                     </p>
                 </form>
             </div>

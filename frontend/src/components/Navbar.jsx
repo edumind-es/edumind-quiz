@@ -18,8 +18,8 @@ export default function Navbar() {
     return (
         <nav className="w-full h-16 bg-linear-to-r from-(--edufis-mental-end) to-(--edufis-fisico-end) shadow-lg flex items-center justify-between px-6 z-50 relative">
             <Link to="/" className="flex items-center gap-3 decoration-none group">
-                <img src="/logo.png" alt="Logo" className="h-10 w-auto bg-white/10 rounded-full p-1 group-hover:bg-white/20 transition-all" />
-                <span className="text-white font-bold text-xl tracking-wide hidden md:block">EDUmind Quiz</span>
+                <img src="/logo.png" alt="EDUmind Quiz" className="h-10 w-auto bg-white/10 rounded-full p-1 group-hover:bg-white/20 transition-all" />
+                <span aria-hidden="true" className="text-white font-bold text-xl tracking-wide hidden md:block">EDUmind Quiz</span>
             </Link>
 
             <div className="flex items-center gap-4">
@@ -30,15 +30,16 @@ export default function Navbar() {
                         </span>
                         <button
                             onClick={handleLogout}
+                            aria-label="Salir"
                             className="bg-white/10 hover:bg-white/20 text-white p-2 rounded-full transition-colors flex items-center gap-2 px-4"
                         >
-                            <LogOut size={18} />
+                            <LogOut size={18} aria-hidden="true" />
                             <span className="hidden sm:inline">Salir</span>
                         </button>
                     </>
                 ) : (
-                    <Link to="/" className="text-blue-100 hover:text-white transition-colors">
-                        <Home size={24} />
+                    <Link to="/" aria-label="Inicio" className="text-blue-100 hover:text-white transition-colors">
+                        <Home size={24} aria-hidden="true" />
                     </Link>
                 )}
             </div>

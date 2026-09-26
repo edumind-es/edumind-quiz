@@ -2,23 +2,27 @@ import os
 from datetime import datetime, timedelta
 from typing import Optional
 from jose import jwt
-from passlib.context import CryptContext
+import bcrypt
 
 SECRET_KEY = os.environ.get("SECRET_KEY", "SUPER_SECRET_KEY_CHANGE_ME")
 if not SECRET_KEY or SECRET_KEY == "SUPER_SECRET_KEY_CHANGE_ME":
-    # Just a warning for dev
-    print("WARNING: Using default secret key.")
+    # Solo un aviso para desarrollo
+    print("AVISO: se está usando la clave secreta por defecto (define SECRET_KEY en .env).")
     
 ALGORITHM = os.environ.get("ALGORITHM", "HS256")
 ACCESS_TOKEN_EXPIRE_MINUTES = int(os.environ.get("ACCESS_TOKEN_EXPIRE_MINUTES", str(60 * 24)))
 
-pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
+# Se usa bcrypt directamente (passlib no funciona con bcrypt >= 4.1).
+# Los hashes son los mismos $2b$ que generaba passlib, así que las cuentas existentes siguen valiendo.
 
-def verify_password(plain_password, hashed_password):
-    return pwd_context.verify(plain_password, hashed_password)
+def verify_password(plain_password: str, hashed_password: str) -> bool:
+    try:
+        return bcrypt.checkpw(plain_password.encode("utf-8"), hashed_password.encode("utf-8"))
+    except ValueError:
+        return False
 
-def get_password_hash(password):
-    return pwd_context.hash(password)
+def get_password_hash(password: str) -> str:
+    return bcrypt.hashpw(password.encode("utf-8"), bcrypt.gensalt()).decode("utf-8")
 
 def create_access_token(data: dict, expires_delta: Optional[timedelta] = None):
     to_encode = data.copy()

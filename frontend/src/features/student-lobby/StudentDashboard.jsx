@@ -39,7 +39,7 @@ export default function StudentDashboard() {
         return Math.min(100, Math.round((totalCompleted / totalRequired) * 100));
     };
 
-    if (loading) return <div className="text-white text-center mt-20">Cargando base de datos del equipo...</div>;
+    if (loading) return <div className="text-white text-center mt-20">Cargando los datos del equipo...</div>;
 
     return (
         <div className="min-h-screen bg-(--color-surface) p-4 md:p-8 pb-32">
@@ -48,10 +48,10 @@ export default function StudentDashboard() {
                     <h1 className="text-3xl font-bold bg-gradient-mental text-transparent bg-clip-text drop-shadow-xs">
                         Equipo: {team?.name}
                     </h1>
-                    <p className="text-slate-400 mt-1">Sala de Preparación Académica</p>
+                    <p className="text-slate-400 mt-1">Sala de preparación de preguntas</p>
                 </div>
                 <div className="bg-slate-800/80 border border-slate-700/50 px-6 py-3 rounded-2xl flex items-center gap-4 shadow-lg">
-                    <span className="text-slate-300 font-medium">Progreso Validación</span>
+                    <span className="text-slate-300 font-medium">Preguntas aprobadas</span>
                     <div className="w-32 h-2 bg-slate-900 rounded-full overflow-hidden">
                         <div
                             className="h-full bg-emerald-500 transition-all duration-1000"
@@ -74,7 +74,7 @@ export default function StudentDashboard() {
             <div className="space-y-6">
                 <div className="flex items-center gap-3 mb-6">
                     <MessageSquare className="text-indigo-400" size={28} />
-                    <h2 className="text-2xl font-bold text-white">Escritorio de Revisión</h2>
+                    <h2 className="text-2xl font-bold text-white">Vuestras propuestas</h2>
                 </div>
 
                 {proposals.length === 0 ? (
@@ -99,7 +99,7 @@ export default function StudentDashboard() {
                                     {p.status === 'returned' && p.teacher_feedback && (
                                         <div className="mt-4 p-3 bg-rose-500/10 border border-rose-500/30 rounded-xl">
                                             <p className="text-xs font-bold text-rose-400 mb-1 flex items-center gap-1">
-                                                <AlertTriangle size={12} /> Feedback del Docente:
+                                                <AlertTriangle size={12} /> Comentario del docente:
                                             </p>
                                             <p className="text-sm text-rose-200 line-clamp-3">{p.teacher_feedback}</p>
                                         </div>
@@ -107,12 +107,10 @@ export default function StudentDashboard() {
                                 </div>
                                 <div className="mt-4 pt-4 border-t border-slate-700/50 text-right">
                                     {p.status === 'returned' ? (
-                                        <button className="text-sm font-bold text-indigo-400 hover:text-indigo-300">
-                                            Corregir JSON ↗
-                                        </button>
-                                    ) : (
-                                        <span className="text-xs text-slate-500">Auditoría en curso...</span>
-                                    )}
+                                        <span className="text-xs text-slate-400">Escribidla de nuevo con el comentario en cuenta</span>
+                                    ) : p.status === 'pending' ? (
+                                        <span className="text-xs text-slate-500">Pendiente de revisión</span>
+                                    ) : null}
                                 </div>
                             </div>
                         ))}

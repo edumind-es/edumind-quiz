@@ -20,7 +20,8 @@ export const TeamProvider = ({ children }) => {
     }, []);
 
     const loginTeam = async (pin) => {
-        const response = await api.post(`/auth/team/login?pin=${pin}`);
+        // El PIN va en el cuerpo, no en la URL (no queda en historiales ni registros)
+        const response = await api.post('/auth/team/login', { pin });
         const { access_token, team_name, team_id, proposal_id } = response.data;
         localStorage.setItem('team_token', access_token);
         localStorage.setItem('team_name', team_name);

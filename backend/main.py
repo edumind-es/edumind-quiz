@@ -8,7 +8,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from app.core.database import Base, engine
 
-# Import all models to ensure they are registered with SQLAlchemy
+# Importar todos los modelos para que SQLAlchemy los registre
 from app.domains.auth.models import User
 from app.domains.classroom.models import Classroom, Area, Proposal
 from app.domains.team.models import Team
@@ -18,7 +18,7 @@ Base.metadata.create_all(bind=engine)
 
 app = FastAPI(
     title="EDUmind Quiz API",
-    description="Backend for the new Trivial App (Professional Vertical Slice Architecture)",
+    description="API de Quiz EDUmind: aulas, equipos con PIN, propuestas de preguntas y partida",
     version="2.0.0"
 )
 
@@ -41,7 +41,7 @@ app.add_middleware(
 
 @app.get("/")
 def read_root():
-    return {"message": "Welcome to EDUmind Quiz API", "status": "active", "architecture": "vertical-slice"}
+    return {"message": "API de Quiz EDUmind", "status": "active"}
 
 from app.domains.auth.router import router as auth_router
 from app.domains.classroom.router import router as classroom_router
@@ -53,6 +53,3 @@ app.include_router(classroom_router, prefix="/api")
 app.include_router(team_router, prefix="/api")
 app.include_router(quiz_router, prefix="/api")
 
-@app.get("/api/metrics/prometheus", tags=["monitoring"])
-def prometheus_metrics():
-    return {"status": "Metrics disabled in Vertical Slice refactor"}

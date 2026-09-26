@@ -1,0 +1,4 @@
+# Dependencias solo para las pruebas (pip install -r requirements-dev.txt)
+-r requirements.txt
+pytest
+httpx
