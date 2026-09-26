@@ -1,7 +1,9 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap')
-layer(base);
-
 @import 'tailwindcss';
+
+/* Poppins servida en local (SIL OFL 1.1, ver public/fonts/OFL.txt y CREDITS.md): sin peticiones a Google */
+@font-face { font-family: 'Poppins'; font-style: normal; font-weight: 400; font-display: swap; src: url('/fonts/Poppins-Regular.woff2') format('woff2'); }
+@font-face { font-family: 'Poppins'; font-style: normal; font-weight: 600; font-display: swap; src: url('/fonts/Poppins-SemiBold.woff2') format('woff2'); }
+@font-face { font-family: 'Poppins'; font-style: normal; font-weight: 800; font-display: swap; src: url('/fonts/Poppins-ExtraBold.woff2') format('woff2'); }
 
 /*
   The default border color has changed to `currentcolor` in Tailwind CSS v4,
@@ -22,7 +24,7 @@ layer(base);
 }
 
 :root {
-  /* EDUfis Brand Colors (Legacy Integration) */
+  /* Colores de marca EDUfis (heredados) */
   --edufis-mental-start: #A78BFA;
   --edufis-mental-end: #6366F1;
   --edufis-fisico-start: #34D399;
@@ -36,9 +38,9 @@ layer(base);
   --edufis-info-start: #22d3ee;
   --edufis-info-end: #0ea5e9;
 
-  /* Mappings to App Theme */
+  /* Correspondencia con el tema de la app */
   --color-primary: #FFD700;
-  /* Gold (keeping accent) */
+  /* Dorado (acento) */
   --color-background: #0f172a;
   /* Slate 900 */
   --color-surface: #1e293b;
