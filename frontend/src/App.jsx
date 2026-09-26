@@ -9,21 +9,20 @@ import TeacherRegister from './features/auth/TeacherRegister';
 import TeacherDashboard from './features/teacher-dashboard/TeacherDashboard';
 import TeamLogin from './features/auth/TeamLogin';
 import StudentDashboard from './features/student-lobby/StudentDashboard';
-import ExpressMode from './features/game-session/ExpressMode';
 import GameEngine from './features/game-session/GameEngine';
 import Navbar from './components/Navbar';
 import EDUmindFooter from './components/EDUmindFooter';
 
 const PrivateTeacherRoute = ({ children }) => {
   const { user, loading } = useAuth();
-  if (loading) return <div>Loading...</div>;
+  if (loading) return <div>Cargando...</div>;
   if (!user || user.role !== 'teacher') return <Navigate to="/" />;
   return children;
 };
 
 const PrivateTeamRoute = ({ children }) => {
   const { team, loading } = useTeam();
-  if (loading) return <div>Loading...</div>;
+  if (loading) return <div>Cargando...</div>;
   if (!team) return <Navigate to="/" />;
   return children;
 };
@@ -47,6 +46,8 @@ export default function App() {
         <Router>
           <LaminaBar />
           <Navbar />
+          {/* Único <main> de la página: cada pantalla aporta su h1 */}
+          <main>
           <Routes>
             <Route path="/" element={<Welcome />} />
 
@@ -79,10 +80,9 @@ export default function App() {
                 </PrivateTeamRoute>
               }
             />
-
-            <Route path="/express" element={<ExpressMode />} />
           </Routes>
-          <EDUmindFooter appName="EDUmind Quiz" version="1.0.0" />
+          </main>
+          <EDUmindFooter appName="EDUmind Quiz" version="0.2.0" />
         </Router>
       </TeamProvider>
     </AuthProvider>

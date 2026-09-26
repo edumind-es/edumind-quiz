@@ -18,13 +18,6 @@ const ENTRADAS = [
         ruta: '/team/login',
         color: 'var(--lm-social-text)',
     },
-    {
-        num: '03',
-        titulo: 'Express',
-        desc: 'Juego rápido sin registro. Carga tu fichero de preguntas y juega.',
-        ruta: '/express',
-        color: 'var(--lm-fisico-text)',
-    },
 ];
 
 export default function Welcome() {
@@ -42,12 +35,12 @@ export default function Welcome() {
                     <div>
                         <p className="lm-kicker">Aplicación · gamificación</p>
                         <h1 className="lm-display">Quiz<br />EDUmind</h1>
-                        <p className="lm-tagline">Evaluaciones interactivas con dinámica de juego, de EDUmind, por Luis Vilela Acuña.</p>
+                        <p className="lm-tagline">El alumnado escribe las preguntas por equipos, el docente las revisa y después se juega. De EDUmind, por Luis Vilela Acuña.</p>
                     </div>
                     <img src="/logo.png" alt="" aria-hidden="true" style={{ width: '110px', height: '110px', objectFit: 'contain', opacity: 0.9 }} />
                 </header>
 
-                <main style={{ padding: '1.2rem 0 2rem', maxWidth: '760px' }}>
+                <section style={{ padding: '1.2rem 0 2rem', maxWidth: '760px' }}>
                     <p className="lm-sub">Elige tu entrada</p>
                     <div style={{ borderTop: '2px solid var(--lm-rule-strong)' }}>
                         {ENTRADAS.map((entrada) => (
@@ -84,7 +77,7 @@ export default function Welcome() {
                             </button>
                         ))}
                     </div>
-                </main>
+                </section>
 
                 <div className="lm-foot">
                     &copy; {new Date().getFullYear()} <b>EDUmind</b> · Luis Vilela Acuña

@@ -19,7 +19,9 @@ export const AuthProvider = ({ children }) => {
     }, []);
 
     const loginTeacher = async (usernameOrEmail, password) => {
-        const response = await api.post('/auth/token', `username=${usernameOrEmail}&password=${password}`, {
+        // Formulario codificado: usuario y contraseña con caracteres especiales llegan íntegros
+        const cuerpo = new URLSearchParams({ username: usernameOrEmail, password });
+        const response = await api.post('/auth/token', cuerpo.toString(), {
             headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
         });
         const { access_token, role, username } = response.data;
